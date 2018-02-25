@@ -13,7 +13,7 @@ Verwachtingen van deze app:
   - Koop ticket functie die QR-Code generate
 
 ## ✅ **Het Doel** 
-Het doel van deze app is om events te tracken waar je naartoe bent geweest of wil gaan. Beordelen, boodschap delen of je uitgaven bekijken per event. Zo herbeleef je helemaal opnieuw het event!
+Het doel van deze app is om events te tracken waar je naartoe bent geweest of wil gaan. Beoordelen, boodschap delen of je uitgaven bekijken per event. Zo herbeleef je helemaal opnieuw het event!
 ## ⚙️ **Updates** 
 Weekelijkse updates over de verloop van het project.
 
