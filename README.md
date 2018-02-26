@@ -19,7 +19,7 @@ Weekelijkse updates over de verloop van het project.
 
  - ## Week 1
 
-    Deze week ben ik begonnen aan de opdracht.
+    Setup van het project & het opstellen van deze readme. Daarnaast ook een component gemaakt voor Events. Dit ging allemaal vlot na het nog eens nakijken van de vorige les.
  - ## Week 2
 	 
     Dit is de update van week 2.
