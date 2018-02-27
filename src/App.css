@@ -1,11 +1,19 @@
-.app {
-  /* background-color: #333333; */
-  padding: 1rem;
-}
 
 .title {
   text-align: center;
   color: white;
+  font-size: 3rem;
+  font-weight: bold;
+  font-family: Helvetica;
+}
+
+.qoute {
+  text-align: center;
+  background-color: #1E1E1E;
+  padding: 1rem;
+  color: white;
+  font-family: Helvetica;
+  text-transform: uppercase;
 }
 
 .navigatie {
@@ -15,9 +23,23 @@
 
 .event {
   background-color: #3DCA6A;
-  /* border-radius: 1rem; */
+  border-radius: 1rem;
   padding: 1rem;
   width: 80vw;
   margin: 1rem auto;
-  /* box-shadow: 0px 0px 8px -2px rgba(0,0,0,0.75); */
+}
+
+.event-name {
+  font-size: 2rem;
+  font-family: Helvetica;
+  color: white;
+}
+
+.event-date {
+  font-family: Helvetica;
+
+}
+
+.event-money {
+  font-family: Helvetica;
 }

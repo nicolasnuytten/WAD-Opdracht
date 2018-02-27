@@ -1,10 +1,10 @@
 import React from "react";
 
-const Event = ({ name, dateStart, dateEnd }) => (
+const Event = ({ name, dateStart, dateEnd, money }) => (
   <div className="event">
-    <p>Event: {name}</p>
-    <p>Start: {dateStart} </p>
-    <p>End: {dateEnd} </p>
+    <p className="event-name">{name}</p>
+    <p className="event-date">Date: {dateStart} - {dateEnd} </p>
+    <p className="event-money">Money spend: €{money}</p>
   </div>
 );
 
