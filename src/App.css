@@ -7,25 +7,33 @@
   font-family: Helvetica;
 }
 
-.qoute {
-  text-align: center;
-  background-color: #1E1E1E;
-  padding: 1rem;
-  color: white;
-  font-family: Helvetica;
-  text-transform: uppercase;
+.add-icon:hover {
+  transform: scale(1.4);
 }
 
-.navigatie {
+.container {
+  width: 90vw;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navigation {
   background-color: #4CC9F3;
   padding: 1rem;
 }
 
+.events {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .event {
-  background-color: #3DCA6A;
+  background-color: #4CC9F3;
   border-radius: 1rem;
   padding: 1rem;
-  width: 80vw;
+  width: 45vw;
   margin: 1rem auto;
 }
 
@@ -33,13 +41,95 @@
   font-size: 2rem;
   font-family: Helvetica;
   color: white;
+  font-weight: bold;
 }
 
 .event-date {
   font-family: Helvetica;
-
+  background-color: white;
+  /* border-radius: 1rem; */
+  padding: 0.5rem;
 }
 
 .event-money {
   font-family: Helvetica;
+  background-color: white;
+  /* border-radius: 1rem; */
+  padding: 0.5rem;
+}
+
+.event-info {
+  display: flex;
+  margin: 1rem 0;
+  justify-content: space-between;
+}
+
+.event-text {
+  width: 30vw;
+}
+
+.event-text-title {
+  font-size: 1.3rem;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-bottom: 0.2rem;
+}
+
+.event-text-text {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.8rem;
+}
+
+.event-top {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: solid white 0.2rem;
+  padding: 0.5rem;
+}
+
+.event-tags {
+  display: flex;
+  flex-direction: column;
+}
+
+.event-tag {
+  margin-bottom: 0.5rem;
+}
+
+.event-date {
+  width: 11vw;
+  text-align: center;
+}
+
+.event-money {
+  width: 6vw;
+  text-align: center
+}
+
+.edit-icon {
+  height: 1.4rem;
+}
+
+.edit-icon:hover {
+  transform: scale(1.2);
+}
+
+.edit-event-text-text {
+  resize: vertical;
+  width: 20vw;
+}
+
+.edit-event-name {
+  width: 30vw;
+  height: 3vw;
+  font-size: 2rem;
+}
+
+.edit-event-money {
+  width: 10vw;
+  height: 2vw;
+}
+
+.edit-event {
+  background: lightgray;
 }
