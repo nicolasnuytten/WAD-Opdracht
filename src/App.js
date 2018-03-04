@@ -8,32 +8,24 @@ import Nav from "./Nav";
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = ({name: "Event name"});
-    this.state = ({ text: "Event description" });
+    this.state = { EventName: "Bump 2017" };
+    this.state = { text: "Leukste festival ooit" };
+    this.state = { money: "100" };
+    this.state = { date: "2017-06-23" };
   }
 
-  handleChange = (name, text) => {
-    this.handleChangeName(name);
-    this.handleChangeText(text);
-  }
-
-  handleChangeName = (name) => {
-    console.log("name in App:", name);
-    this.setState({name: name });
-  };
-
-  handleChangeText = (text) => {
-    console.log("text in App:", text);
-    this.setState({text: text });
+  handleChange = (inputName, value) => {
+    this.setState({ [inputName]: value });
   };
 
   render() {
-    const {name, text} = this.state
+    const { EventName, text, money, date } = this.state;
     return <div className="app">
         <Nav title="Eventory" />
         <div className="events">
-          <Event name={name} text={text} dateStart="28/07/2017" money="100" />
-          <EditEvent name={name} text={text} onChange={((name, text) => this.handleChange(name, text))}/>
+          <Event name={EventName} text={text} date={date} money={money} />
+          <Event name={EventName} text={text} date={date} money={money} />
+          <EditEvent name={EventName} text={text} money={money} date={date} onChange={(inputName, value) => this.handleChange(inputName, value)} />
         </div>
       </div>;
   }

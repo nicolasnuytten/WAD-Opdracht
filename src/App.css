@@ -116,7 +116,8 @@
 
 .edit-event-text-text {
   resize: vertical;
-  width: 20vw;
+  width: 30vw;
+  height: 5rem;
 }
 
 .edit-event-name {
