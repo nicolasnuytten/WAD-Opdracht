@@ -8,10 +8,7 @@ import Nav from "./Nav";
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { EventName: "Bump 2017" };
-    this.state = { text: "Leukste festival ooit" };
-    this.state = { money: "100" };
-    this.state = { date: "2017-06-23" };
+    this.state = { EventName: "Bump 2017", date: "2017-06-23", text: "Leukste festival ooit", money: "100" };
   }
 
   handleChange = (inputName, value) => {
@@ -23,7 +20,6 @@ class App extends Component {
     return <div className="app">
         <Nav title="Eventory" />
         <div className="events">
-          <Event name={EventName} text={text} date={date} money={money} />
           <Event name={EventName} text={text} date={date} money={money} />
           <EditEvent name={EventName} text={text} money={money} date={date} onChange={(inputName, value) => this.handleChange(inputName, value)} />
         </div>
