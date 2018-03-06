@@ -22,7 +22,7 @@ Weekelijkse updates over de verloop van het project.
     Setup van het project & het opstellen van deze readme. Daarnaast ook een component gemaakt voor Events. Dit ging allemaal vlot na het nog eens nakijken van de vorige les.
  - ## Week 2
 	 
-    Dit is de update van week 2.
+    Controlled component aangemaakt voor het aanpassen van het event. Het was even zoeken hoe ik voor elke input met 1 functie de waarde kon aanpassen. Proptypes gingen vlot. 
  - ## Week 3
 	 
     Dit is de update van week 3.
