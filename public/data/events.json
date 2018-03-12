@@ -1,0 +1,26 @@
+{
+  "0": {
+    "name": "Bump 2017",
+    "date": "2017-06-23",
+    "money": 100,
+    "text": "Leukste festival ooit"
+  },
+  "1": {
+    "name": "Tomorrowland 2017",
+    "date": "2017-06-23",
+    "money": 20,
+    "text": "Worlds biggest dance festival"
+  },
+  "2": {
+    "name": "Pukkelpop 2017",
+    "date": "2017-08-15",
+    "money": 100,
+    "text": "Pukkel, Pukkel aan de top!"
+  },
+  "3": {
+    "name": "Rock Werchter 2017",
+    "date": "2017-06-30",
+    "money": 80,
+    "text": "Lekkere biertjes daar!"
+  }
+}

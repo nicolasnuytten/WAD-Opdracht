@@ -38,7 +38,7 @@ const EditEvent = (props) => {
 EditEvent.propTypes = {
   name: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
-  money: PropTypes.string.isRequired,
+  money: PropTypes.number.isRequired,
   text: PropTypes.string.isRequired
 };
 

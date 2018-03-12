@@ -8,22 +8,72 @@ import Nav from "./Nav";
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { EventName: "Bump 2017", date: "2017-06-23", text: "Leukste festival ooit", money: "100" };
+    this.state = { events: {}, active: null };
   }
 
-  handleChange = (inputName, value) => {
-    this.setState({ [inputName]: value });
+  componentDidMount = () => {
+    fetch("./data/events.json")
+      .then(r => r.json())
+      .then(this.parseData);
+  };
+
+  parseData = data => {
+    console.log("data:", data);
+    this.setState({ events: data });
+  };
+
+  handleRemoveEvent = id => {
+    const events = { ...this.state.events };
+    delete events[id];
+    this.setState({ events, active: null });
+  };
+
+  handleChangeEvent = id => {
+    this.setState({ active: id });
+  };
+
+  handleChangeItem = e => {
+    const events = { ...this.state.events };
+    const { active } = this.state;
+    const { value } = e.currentTarget;
+    events[active] = { value };
+    this.setState({ events });
+  };
+
+  handleAddEvent = () => {
+    const events = { ...this.state.events };
+    const id = Math.random()
+      .toString(16)
+      .substr(3, 5);
+    events[id] = { value: id };
+    this.setState({ events });
   };
 
   render() {
-    const { EventName, text, money, date } = this.state;
-    return <div className="app">
-        <Nav title="Eventory" />
+    const { events, active } = this.state;
+    return (
+      <div className="app">
+        <Nav title="Eventory" onAdd={id => this.handleAddEvent(id)} />
+        {active ? (
+          <EditEvent
+            value={events[active].value}
+            onChange={this.handleChangeItem}
+          />
+        ) : (
+          ""
+        )}
         <div className="events">
-          <Event name={EventName} text={text} date={date} money={money} />
-          <EditEvent name={EventName} text={text} money={money} date={date} onChange={(inputName, value) => this.handleChange(inputName, value)} />
+          {Object.keys(events).map(id => (
+            <Event
+              id={id}
+              event={events[id]}
+              onRemove={id => this.handleRemoveEvent(id)}
+              onChange={id => this.handleChangeEvent(id)}
+            />
+          ))}
         </div>
-      </div>;
+      </div>
+    );
   }
 }
 

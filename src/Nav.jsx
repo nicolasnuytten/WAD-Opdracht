@@ -1,15 +1,21 @@
 import React from "react";
-import add from "./assets/icon/add.png";
+import AddEvent from "./AddEvent"
 
-const Nav = ({ title }) => (
-  <div className="navigation">
-    <div className="container">
-      <h1 className="title">{title}</h1>
-      <a href="" className="add-icon">
-        <img src={add} alt="{add}" />
-      </a>
-    </div>
-  </div>
-);
+const Nav = ({ title, onAdd }) => {
+
+  const handleAddEvent = (id) => {
+    onAdd(id);
+  }
+  
+  return <div className="navigation">
+      <div className="container">
+        <h1 className="title">{title}</h1>
+      </div>
+      <section className="addEvent">
+        <AddEvent onAdd={id => handleAddEvent(id)} />
+      </section>
+    </div>;
+
+};
 
 export default Nav;
