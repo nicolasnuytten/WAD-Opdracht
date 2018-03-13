@@ -5,29 +5,22 @@ const AddEvent = ({ events, onAdd }) => {
     onAdd();
   };
 
-  const handleChangeInput = (e) => {
-    const { value, name } = e.currentTarget;
-    const event = { ...events };
-    event[name] = value;
-    onAdd(event);
-  };
-
   return (
     <div className="add-form">
       <div className="event-tags">
         <label id="name">Event Name:</label>
-        <input name="name" type="text" onChange={e => handleChangeInput(e)} />
+        <input name="name" type="text" />
       </div>
       <div className="event-tags">
         <label id="date">Date:</label>
-        <input name="date" type="date" onChange={e => handleChangeInput(e)} />
+        <input name="date" type="date"  />
       </div>
       <div className="event-tags">
         <label id="money">Money:</label>
         <select
           name="money"
           className="edit-event-money event-tag"
-          onChange={e => handleChangeInput(e)}
+          
         >
           <option value="10">10</option>
           <option value="20">20</option>
@@ -43,7 +36,7 @@ const AddEvent = ({ events, onAdd }) => {
       </div>
       <div className="event-tags">
         <label id="money">Description:</label>
-        <textarea name="text" onChange={e => handleChangeInput(e)} />
+        <textarea name="text"  />
       </div>
 
       <button onClick={() => handleAddItem()}>Toevoegen</button>

@@ -36,7 +36,7 @@ class App extends Component {
   handleChangeItem = (inputName, value) => {
     const events = { ...this.state.events };
     const { active } = this.state;
-    console.log(events[active]);
+    console.log(events[active])
     events[active] = {[inputName]: value};
     this.setState({ events });
   };
