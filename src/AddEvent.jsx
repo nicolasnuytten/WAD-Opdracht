@@ -1,23 +1,34 @@
 import React from "react";
 
-const AddEvent = ({onAdd}) => {
-
+const AddEvent = ({ events, onAdd }) => {
   const handleAddItem = () => {
     onAdd();
   };
-  
-  return <div className="add-form">
+
+  const handleChangeInput = (e) => {
+    const { value, name } = e.currentTarget;
+    const event = { ...events };
+    event[name] = value;
+    onAdd(event);
+  };
+
+  return (
+    <div className="add-form">
       <div className="event-tags">
-        <label id="EventName">Event Name:</label>
-        <input name="EventName" type="text" />
+        <label id="name">Event Name:</label>
+        <input name="name" type="text" onChange={e => handleChangeInput(e)} />
       </div>
       <div className="event-tags">
         <label id="date">Date:</label>
-        <input name="date" type="date" />
+        <input name="date" type="date" onChange={e => handleChangeInput(e)} />
       </div>
       <div className="event-tags">
         <label id="money">Money:</label>
-        <select name="money" className="edit-event-money event-tag">
+        <select
+          name="money"
+          className="edit-event-money event-tag"
+          onChange={e => handleChangeInput(e)}
+        >
           <option value="10">10</option>
           <option value="20">20</option>
           <option value="30">30</option>
@@ -32,11 +43,12 @@ const AddEvent = ({onAdd}) => {
       </div>
       <div className="event-tags">
         <label id="money">Description:</label>
-        <textarea name="text" />
+        <textarea name="text" onChange={e => handleChangeInput(e)} />
       </div>
 
       <button onClick={() => handleAddItem()}>Toevoegen</button>
-    </div>;
+    </div>
+  );
 };
 
 export default AddEvent;

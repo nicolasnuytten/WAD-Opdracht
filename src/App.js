@@ -4,6 +4,7 @@ import "./App.css";
 import Event from "./Event";
 import EditEvent from "./EditEvent";
 import Nav from "./Nav";
+import AddEvent from "./AddEvent";
 
 class App extends Component {
   constructor(props) {
@@ -32,11 +33,11 @@ class App extends Component {
     this.setState({ active: id });
   };
 
-  handleChangeItem = e => {
+  handleChangeItem = (inputName, value) => {
     const events = { ...this.state.events };
     const { active } = this.state;
-    const { value } = e.currentTarget;
-    events[active] = { value };
+    console.log(events[active]);
+    events[active] = {[inputName]: value};
     this.setState({ events });
   };
 
@@ -45,23 +46,18 @@ class App extends Component {
     const id = Math.random()
       .toString(16)
       .substr(3, 5);
-    events[id] = { value: id };
+    events[id] = { value: id, name: "event naam", date: "2018-01-01", money: 10, text: "dit is tekst" };
     this.setState({ events });
-  };
+  }; 
 
   render() {
     const { events, active } = this.state;
-    return (
-      <div className="app">
-        <Nav title="Eventory" onAdd={id => this.handleAddEvent(id)} />
-        {active ? (
-          <EditEvent
-            value={events[active].value}
-            onChange={this.handleChangeItem}
-          />
-        ) : (
-          ""
-        )}
+    return <div className="app">
+        <Nav title="Eventory" />
+        <section className="addEvent">
+          <AddEvent event={events} onAdd={id => this.handleAddEvent(id)} />
+        </section>
+        {active ? <EditEvent events={events} onChange={(inputName, value) => this.handleChangeItem(inputName, value)} /> : ""}
         <div className="events">
           {Object.keys(events).map(id => (
             <Event
@@ -72,8 +68,7 @@ class App extends Component {
             />
           ))}
         </div>
-      </div>
-    );
+      </div>;
   }
 }
 

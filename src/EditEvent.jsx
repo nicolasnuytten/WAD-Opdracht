@@ -1,21 +1,21 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const EditEvent = (props) => {
+const EditEvent = ({name, date, money, text, onChange}) => {
   const handleChange = e => {
     const value = e.target.value;
     const inputName = e.target.name;
-    props.onChange(inputName, value);
+    onChange(inputName, value);
   };
 
   return <div className="event edit-event">
       <div className="event-top">
-        <input value={props.name} name="EventName" type="text" className="edit-event-name" onChange={handleChange} />
+        <input value={name} name="name" type="text" className="edit-event-name" onChange={handleChange} />
       </div>
       <div className="event-info">
         <div className="event-tags">
-          <input name="date" type="date" className="edit-event-date event-tag" onChange={handleChange} value={props.date} />
-          <select name="money" className="edit-event-money event-tag" onChange={handleChange} value={props.money}>
+          <input name="date" type="date" className="edit-event-date event-tag" onChange={handleChange} value={date} />
+          <select name="money" className="edit-event-money event-tag" onChange={handleChange} value={money}>
             <option value="10">10</option>
             <option value="20">20</option>
             <option value="30">30</option>
@@ -29,7 +29,7 @@ const EditEvent = (props) => {
           </select>
         </div>
         <div className="event-text">
-          <textarea name="text" className="edit-event-text-text" onChange={handleChange} value={props.text} />
+          <textarea name="text" className="edit-event-text-text" onChange={handleChange} value={text} />
         </div>
       </div>
     </div>;
