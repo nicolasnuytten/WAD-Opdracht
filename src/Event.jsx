@@ -7,11 +7,12 @@ const Event = ({id, event, onRemove, onChange }) => {
    onRemove(id);
   }
 
-  const handleChangeItem = id => {
+  const handleChangeItem = (id) => {
    onChange(id);
+  //  console.log(event)
   }
   
-  return <div className="event">
+  return <div className="event" id={id}>
       <div className="event-top">
         <p className="event-name">{event.name}</p>
       </div>
@@ -32,7 +33,10 @@ const Event = ({id, event, onRemove, onChange }) => {
 };
 
 Event.propTypes = {
-  event: PropTypes.object.isRequired
+  id: PropTypes.string.isRequired,
+  event: PropTypes.object.isRequired,
+  onChange: PropTypes.func.isRequired,
+  onRemove: PropTypes.func.isRequired
 };
 
 export default Event;

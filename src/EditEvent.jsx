@@ -1,21 +1,26 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const EditEvent = ({name, date, money, text, onChange}) => {
+const EditEvent = ({ id, event, onChange, onSubmit }) => {
   const handleChange = e => {
-    const value = e.target.value;
-    const inputName = e.target.name;
-    onChange(inputName, value);
+    const { value, name } = e.currentTarget;
+    const updateEvent = { ...event };
+    updateEvent[name] = value;
+    onChange(id, updateEvent);
   };
 
-  return <div className="event edit-event">
+  const handleSubmit = e => {
+    onSubmit(id)
+  }
+
+  return <form className="event edit-event" onSubmit={handleSubmit}>
       <div className="event-top">
-        <input value={name} name="name" type="text" className="edit-event-name" onChange={handleChange} />
+        <input value={event.name} name="name" type="text" className="edit-event-name" onChange={handleChange} />
       </div>
       <div className="event-info">
         <div className="event-tags">
-          <input name="date" type="date" className="edit-event-date event-tag" onChange={handleChange} value={date} />
-          <select name="money" className="edit-event-money event-tag" onChange={handleChange} value={money}>
+          <input value={event.date} name="date" type="date" className="edit-event-date event-tag" onChange={handleChange} />
+          <select value={event.money} name="money" className="edit-event-money event-tag" onChange={handleChange}>
             <option value="10">10</option>
             <option value="20">20</option>
             <option value="30">30</option>
@@ -29,17 +34,18 @@ const EditEvent = ({name, date, money, text, onChange}) => {
           </select>
         </div>
         <div className="event-text">
-          <textarea name="text" className="edit-event-text-text" onChange={handleChange} value={text} />
+          <textarea name="text" className="edit-event-text-text" onChange={handleChange} value={event.text} />
         </div>
       </div>
-    </div>;
+      <button>Done</button>
+    </form>;
 };
 
 EditEvent.propTypes = {
-  name: PropTypes.string.isRequired,
-  date: PropTypes.string.isRequired,
-  money: PropTypes.number.isRequired,
-  text: PropTypes.string.isRequired
+  id: PropTypes.string.isRequired,
+  event: PropTypes.object.isRequired,
+  onChange: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
 };
 
 export default EditEvent;
