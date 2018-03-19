@@ -1,17 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Event = ({id, event, onRemove, onChange }) => {
-
+const Event = ({ id, event, onRemove, onChange }) => {
   const handleRemoveItem = id => {
-   onRemove(id);
-  }
+    onRemove(id);
+  };
 
-  const handleChangeItem = (id) => {
-   onChange(id);
-  //  console.log(event)
-  }
-  
+  const handleChangeItem = id => {
+    onChange(id);
+    //  console.log(event)
+  };
+
   return <div className="event" id={id}>
       <div className="event-top">
         <p className="event-name">{event.name}</p>
@@ -35,8 +34,6 @@ const Event = ({id, event, onRemove, onChange }) => {
 Event.propTypes = {
   id: PropTypes.string.isRequired,
   event: PropTypes.object.isRequired,
-  onChange: PropTypes.func.isRequired,
-  onRemove: PropTypes.func.isRequired
 };
 
 export default Event;

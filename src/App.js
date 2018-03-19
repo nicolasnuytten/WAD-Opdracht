@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./reset.css";
 import "./App.css";
-import Event from "./Event";
+import Events from "./Events";
 import EditEvent from "./EditEvent";
 import Nav from "./Nav";
 import AddEvent from "./AddEvent";
@@ -60,18 +60,11 @@ class App extends Component {
     return <div className="app">
         <Nav title="Eventory" />
         {active ? <EditEvent id={active} event={events[active]} onChange={(id, updateEvent) => this.handleChangeItem(id, updateEvent)} onSubmit={id => this.handleSubmitEdit(id)} /> : ""}
-        <div className="events">
-          {Object.keys(events).map(id => (
-            <Event
-              id={id}
-              event={events[id]}
-              onRemove={id => this.handleRemoveEvent(id)}
-              onChange={id => this.handleChangeEvent(id)}
-            />
-          ))}
-        </div>
+        <div className="events" />
         <Switch>
+          <Route path="/" exact render={() => <Events events={events} onRemove={id => this.handleRemoveEvent(id)} />} onChange={id => this.handleChangeEvent(id)} />
           <Route path="/event/add" component={AddEvent} />
+          <Route component={NotFound} />
         </Switch>
       </div>;
   }
