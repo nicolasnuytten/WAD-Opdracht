@@ -6,11 +6,12 @@ const Event = ({ id, event, onRemove, onChange }) => {
     onRemove(id);
   };
 
-  const handleChangeItem = id => {
+  const handleChangeItem = (id) => {
     onChange(id);
   };
 
-  return <div className="event" id={id}>
+  return (
+    <div className="event" id={id}>
       <div className="event-top">
         <p className="event-name">{event.name}</p>
       </div>
@@ -27,7 +28,8 @@ const Event = ({ id, event, onRemove, onChange }) => {
         <button onClick={() => handleChangeItem(id)}>Aanpassen</button>
         <button onClick={() => handleRemoveItem(id)}>x</button>
       </div>
-    </div>;
+    </div>
+  );
 };
 
 Event.propTypes = {

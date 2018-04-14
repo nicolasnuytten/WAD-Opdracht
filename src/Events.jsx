@@ -3,7 +3,6 @@ import Event from "./Event";
 import PropTypes from "prop-types";
 
 const Events = ({ events, onRemove, onChange }) => {
-
   return (
     <ul className="events">
       {Object.keys(events).map(id => (

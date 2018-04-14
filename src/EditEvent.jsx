@@ -1,29 +1,26 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const EditEvent = ({ id, event, onSubmit }) => {
-  // const handleChange = e => {
-  //   const { value, name } = e.currentTarget;
-  //   const updateEvent = { ...event };
-  //   updateEvent[name] = value;
-  //   onChange(id, updateEvent);
-  // };
-
-  const handleSubmit = e => {
+const EditEvent = ({ id, event, onSubmit, onChange }) => {
+  const handleChange = e => {
     const { value, name } = e.currentTarget;
     const updateEvent = { ...event };
     updateEvent[name] = value;
-    onSubmit(id, updateEvent);
+    onChange(id, updateEvent);
+  };
+
+  const handleSubmit = e => {
+    onSubmit(id);
   };
 
   return <form className="event edit-event" onSubmit={handleSubmit}>
       <div className="event-top">
-        <input value={event.name} name="name" type="text" className="edit-event-name" />
+        <input value={event.name} name="name" type="text" className="edit-event-name" onChange={handleChange} />
       </div>
-      {/* <div className="event-info">
+      <div className="event-info">
         <div className="event-tags">
-          <input value={event.date} name="date" type="date" className="edit-event-date event-tag" />
-          <select value={event.money} name="money" className="edit-event-money event-tag" >
+          <input value={event.date} name="date" type="date" className="edit-event-date event-tag" onChange={handleChange} />
+          <select value={event.money} name="money" className="edit-event-money event-tag" onChange={handleChange}>
             <option value="10">10</option>
             <option value="20">20</option>
             <option value="30">30</option>
@@ -37,9 +34,9 @@ const EditEvent = ({ id, event, onSubmit }) => {
           </select>
         </div>
         <div className="event-text">
-          <textarea name="text" className="edit-event-text-text"  value={event.text} />
+          <textarea name="text" className="edit-event-text-text" value={event.text} onChange={handleChange} />
         </div>
-      </div> */}
+      </div>
       <button>Done</button>
     </form>;
 };
