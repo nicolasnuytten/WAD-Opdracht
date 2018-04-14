@@ -1,26 +1,29 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const EditEvent = ({ id, event, onChange, onSubmit }) => {
-  const handleChange = e => {
+const EditEvent = ({ id, event, onSubmit }) => {
+  // const handleChange = e => {
+  //   const { value, name } = e.currentTarget;
+  //   const updateEvent = { ...event };
+  //   updateEvent[name] = value;
+  //   onChange(id, updateEvent);
+  // };
+
+  const handleSubmit = e => {
     const { value, name } = e.currentTarget;
     const updateEvent = { ...event };
     updateEvent[name] = value;
-    onChange(id, updateEvent);
+    onSubmit(id, updateEvent);
   };
-
-  const handleSubmit = e => {
-    onSubmit(id)
-  }
 
   return <form className="event edit-event" onSubmit={handleSubmit}>
       <div className="event-top">
-        <input value={event.name} name="name" type="text" className="edit-event-name" onChange={handleChange} />
+        <input value={event.name} name="name" type="text" className="edit-event-name" />
       </div>
-      <div className="event-info">
+      {/* <div className="event-info">
         <div className="event-tags">
-          <input value={event.date} name="date" type="date" className="edit-event-date event-tag" onChange={handleChange} />
-          <select value={event.money} name="money" className="edit-event-money event-tag" onChange={handleChange}>
+          <input value={event.date} name="date" type="date" className="edit-event-date event-tag" />
+          <select value={event.money} name="money" className="edit-event-money event-tag" >
             <option value="10">10</option>
             <option value="20">20</option>
             <option value="30">30</option>
@@ -34,9 +37,9 @@ const EditEvent = ({ id, event, onChange, onSubmit }) => {
           </select>
         </div>
         <div className="event-text">
-          <textarea name="text" className="edit-event-text-text" onChange={handleChange} value={event.text} />
+          <textarea name="text" className="edit-event-text-text"  value={event.text} />
         </div>
-      </div>
+      </div> */}
       <button>Done</button>
     </form>;
 };

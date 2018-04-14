@@ -59,11 +59,11 @@ class App extends Component {
     const { events, active } = this.state;
     return <div className="app">
         <Nav title="Eventory" />
-        {active ? <EditEvent id={active} event={events[active]} onChange={(id, updateEvent) => this.handleChangeItem(id, updateEvent)} onSubmit={id => this.handleSubmitEdit(id)} /> : ""}
+        {active ? <EditEvent id={active} event={events[active]} onSubmit={(id, updateEvent) => this.handleChangeItem(id, updateEvent)} /> : ""}
         <div className="events" />
         <Switch>
           <Route path="/" exact render={() => <Events events={events} onRemove={id => this.handleRemoveEvent(id)} />} onChange={id => this.handleChangeEvent(id)} />
-          <Route path="/event/add" component={AddEvent} />
+          <Route path="/event/add" exact render={() => <AddEvent onAdd={this.handleAddEvent} />} />
           <Route component={NotFound} />
         </Switch>
       </div>;

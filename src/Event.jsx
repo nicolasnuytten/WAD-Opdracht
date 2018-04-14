@@ -8,7 +8,6 @@ const Event = ({ id, event, onRemove, onChange }) => {
 
   const handleChangeItem = id => {
     onChange(id);
-    //  console.log(event)
   };
 
   return <div className="event" id={id}>

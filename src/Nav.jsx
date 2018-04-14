@@ -5,8 +5,13 @@ const Nav = ({ title }) => {
   return <div className="navigation">
       <div className="container">
         <h1 className="title">
-          <Link to="/" className="title">{title}</Link>
+          <Link to="/" className="title">
+            {title}
+          </Link>
         </h1>
+        <Link to="/event/add" className="title">
+          +
+        </Link>
       </div>
     </div>;
 };

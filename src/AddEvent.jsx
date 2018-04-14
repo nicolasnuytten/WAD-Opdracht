@@ -7,22 +7,10 @@ let inputText = null;
 
 const AddEvent = ({ events, onAdd }) => {
   
-  const handleAddItem = (e) => {
+  const handleAddItem = e => {
     e.preventDefault();
-    if (
-      inputName.value &&
-      inputDate.value &&
-      inputMoney.value &&
-      inputText.value
-    ) {
-      onAdd(
-        inputName.value,
-        inputDate.value,
-        inputMoney.value,
-        inputText.value
-      );
-      e.currentTarget.reset();
-    }
+    onAdd( inputName.value, inputDate.value, inputMoney.value, inputText.value);
+    e.currentTarget.reset();
   };
 
   return (
