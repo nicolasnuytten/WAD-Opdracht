@@ -35,6 +35,8 @@ const Event = ({ id, event, onRemove, onChange }) => {
 Event.propTypes = {
   id: PropTypes.string.isRequired,
   event: PropTypes.object.isRequired,
+  onRemove: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired
 };
 
 export default Event;

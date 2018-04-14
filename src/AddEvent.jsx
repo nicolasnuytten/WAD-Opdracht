@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 let inputName = null;
 let inputDate = null;
@@ -9,8 +10,10 @@ const AddEvent = ({ events, onAdd }) => {
   
   const handleAddItem = e => {
     e.preventDefault();
-    onAdd( inputName.value, inputDate.value, inputMoney.value, inputText.value);
-    e.currentTarget.reset();
+    if ((inputName.value && inputDate.value && inputMoney.value && inputText.value)){
+      onAdd(inputName.value, inputDate.value, inputMoney.value, inputText.value);
+      e.currentTarget.reset();
+    }
   };
 
   return (
@@ -51,5 +54,11 @@ const AddEvent = ({ events, onAdd }) => {
     </form>
   );
 };
+
+AddEvent.propTypes = {
+  events: PropTypes.object.isRequired,
+  onAdd: PropTypes.func.isRequired
+};
+
 
 export default AddEvent;

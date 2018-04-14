@@ -60,7 +60,6 @@ class App extends Component {
     const { events, active } = this.state;
     return <div className="app">
         <Nav title="Eventory" />
-        
         {active ? <EditEvent id={active} event={events[active]} onSubmit={this.handleSubmitEdit} onChange={(id, updateEvent) => this.handleChangeItem(id, updateEvent)} /> : ""}
         <div className="events" />
         <Switch>

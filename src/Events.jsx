@@ -6,7 +6,7 @@ const Events = ({ events, onRemove, onChange }) => {
   return (
     <ul className="events">
       {Object.keys(events).map(id => (
-        <Event
+        <Event key={id}
           id={id}
           event={events[id]}
           onRemove={onRemove}
@@ -19,6 +19,8 @@ const Events = ({ events, onRemove, onChange }) => {
 
 Events.propTypes = {
   events: PropTypes.object.isRequired,
+  onRemove: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
 };
 
 export default Events;
