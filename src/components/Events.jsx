@@ -2,19 +2,13 @@ import React from "react";
 import Event from "./Event";
 import PropTypes from "prop-types";
 
-const Events = ({ events, onRemove, onChange }) => {
-  return (
-    <ul className="events">
+const Events = ({ store }) => {
+  const { events } = store;
+  return <ul className="events">
       {Object.keys(events).map(id => (
-        <Event key={id}
-          id={id}
-          event={events[id]}
-          onRemove={onRemove}
-          onChange={onChange}
-        />
+        <Event key={id} id={id} event={events[id]} />
       ))}
-    </ul>
-  );
+    </ul>;
 };
 
 Events.propTypes = {

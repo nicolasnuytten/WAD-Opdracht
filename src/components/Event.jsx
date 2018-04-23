@@ -1,35 +1,36 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {observer } from "mobx-react"
 
-const Event = ({ id, event, onRemove, onChange }) => {
-  const handleRemoveItem = id => {
-    onRemove(id);
-  };
+const Event = ({ event }) => {
 
-  const handleChangeItem = (id) => {
-    onChange(id);
-  };
+  const { name, date, money, text } = event;
+  
+  // const handleRemoveItem = id => {
+  //   onRemove(id);
+  // };
 
-  return (
-    <div className="event" id={id}>
+  // const handleChangeItem = (id) => {
+  //   onChange(id);
+  // };
+
+  return <div className="event">
       <div className="event-top">
-        <p className="event-name">{event.name}</p>
+        <p className="event-name">{name}</p>
       </div>
       <div className="event-info">
         <div className="event-tags">
-          <p className="event-date event-tag">{event.date}</p>
-          <p className="event-money event-tag">± €{event.money}</p>
+          <p className="event-date event-tag">{date}</p>
+          <p className="event-money event-tag">± €{money}</p>
         </div>
         <div className="event-text">
-          <p className="event-text-text">{event.text}</p>
+          <p className="event-text-text">{text}</p>
         </div>
       </div>
       <div>
-        <button onClick={() => handleChangeItem(id)}>Aanpassen</button>
-        <button onClick={() => handleRemoveItem(id)}>x</button>
+        <button onClick={event.decrement}>x</button>
       </div>
-    </div>
-  );
+    </div>;
 };
 
 Event.propTypes = {
@@ -39,4 +40,4 @@ Event.propTypes = {
   onChange: PropTypes.func.isRequired
 };
 
-export default Event;
+export default observer(Event);

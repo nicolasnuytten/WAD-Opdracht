@@ -1,26 +1,28 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {observer} from "mobx-react"
 
-const EditEvent = ({ id, event, onSubmit, onChange }) => {
-  const handleChange = e => {
-    const { value, name } = e.currentTarget;
-    const updateEvent = { ...event };
-    updateEvent[name] = value;
-    onChange(id, updateEvent);
-  };
+const EditEvent = ({ event }) => {
+  const { name, date, money, text } = event;
+  // const handleChange = e => {
+  //   const { value, name } = e.currentTarget;
+  //   const updateEvent = { ...event };
+  //   updateEvent[name] = value;
+  //   onChange(id, updateEvent);
+  // };
 
-  const handleSubmit = e => {
-    onSubmit(id);
-  };
+  // const handleSubmit = e => {
+  //   onSubmit(id);
+  // };
 
-  return <form className="event edit-event" onSubmit={handleSubmit}>
+  return <form className="event edit-event">
       <div className="event-top">
-        <input value={event.name} name="name" type="text" className="edit-event-name" onChange={handleChange} />
+        <input value={name} name="name" type="text" className="edit-event-name" onChange={e => event.updateName(e.target.value)} />
       </div>
       <div className="event-info">
         <div className="event-tags">
-          <input value={event.date} name="date" type="date" className="edit-event-date event-tag" onChange={handleChange} />
-          <select value={event.money} name="money" className="edit-event-money event-tag" onChange={handleChange}>
+          <input value={date} name="date" type="date" className="edit-event-date event-tag" onChange={e => event.updateDate(e.target.value)} />
+          <select value={money} name="money" className="edit-event-money event-tag" onChange={e => event.updateMoney(e.target.value)}>
             <option value="10">10</option>
             <option value="20">20</option>
             <option value="30">30</option>
@@ -34,10 +36,9 @@ const EditEvent = ({ id, event, onSubmit, onChange }) => {
           </select>
         </div>
         <div className="event-text">
-          <textarea name="text" className="edit-event-text-text" value={event.text} onChange={handleChange} />
+          <textarea name="text" className="edit-event-text-text" value={text} onChange={e => event.updateText(e.target.value)} />
         </div>
       </div>
-      <button>Done</button>
     </form>;
 };
 
@@ -48,4 +49,4 @@ EditEvent.propTypes = {
   onSubmit: PropTypes.func.isRequired,
 };
 
-export default EditEvent;
+export default observer(EditEvent);
