@@ -1,12 +1,13 @@
 import React, { Component } from "react";
-import "./reset.css";
-import "./App.css";
-import Events from "./Events";
-import EditEvent from "./EditEvent";
-import Nav from "./Nav";
-import AddEvent from "./AddEvent";
-import NotFound from "./NotFound";
+import "../css/reset.css";
+import "../css/App.css";
+import Events from "../components/Events";
+import EditEvent from "../components/EditEvent";
+import Nav from "../components/Nav";
+import AddEvent from "../components/AddEvent";
+import NotFound from "../components/NotFound";
 import { Route, Switch } from "react-router-dom";
+import { observer } from "mobx-react";
 
 class App extends Component {
   constructor(props) {
@@ -71,4 +72,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default observer(App);
