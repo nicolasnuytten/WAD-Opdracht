@@ -5,15 +5,14 @@ import Event from "../components/Event";
 import Nav from "../components/Nav";
 import AddEvent from "../components/AddEvent";
 import NotFound from "../components/NotFound";
-// import { Route, Switch } from "react-router-dom";
-import { observer } from "mobx-react";
+import { Route, Switch } from "react-router-dom";
 import EditEvent from "../components/EditEvent";
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { events: {}, active: null };
-  }
+  // constructor(props) {
+  //   super(props);
+  //   // this.state = { events: {}, active: null };
+  // }
 
   componentDidMount = () => {
     fetch("../data/events.json")
@@ -22,7 +21,6 @@ class App extends Component {
   };
 
   parseData = data => {
-    console.log("data:", data);
     this.setState({ events: data });
   };
 
@@ -44,8 +42,6 @@ class App extends Component {
   //   this.setState({ events: updateEvents });
   // };
 
-
-
   // handleSubmitEdit = (id) => {
   //   this.setState({ active: null });
   // };
@@ -54,23 +50,22 @@ class App extends Component {
     // const { events, active } = this.state;
     const { store } = this.props;
     return <div className="app">
-        <Nav title="Eventory" />
+        <Nav title="Eventory" store= {store} />
         {/* {active ? <EditEvent id={active} event={events[active]} onSubmit={this.handleSubmitEdit} onChange={(id, updateEvent) => this.handleChangeItem(id, updateEvent)} /> : ""} */}
-        
-        {/* <Switch>
-          <Route path="/" exact render={() => <Events store={store} />} />
-          <Route path="/event/add" exact render={() => <AddEvent onAdd={store.handleAddEvent} />} />
+        <Switch>
+          <Route path="/" exact render={() => <div className="events">
+                {store.events.map(event => (
+                  <div className="events" key={event.id}>
+                    <Event event={event} />
+                    <EditEvent event={event} />
+                  </div>
+                ))}
+              </div>} />
+          <Route path="/event/add"  render={() => <AddEvent onAdd={store.handleAddEvent} />} />
           <Route component={NotFound} />
-        </Switch> */}
-        
-        {store.events.map(event => (
-          <div className="events" >
-            <Event key={event.id} event={event} />
-            <EditEvent key={event.id } event={event} />
-          </div>
-        ))}
-        </div>
+        </Switch>
+      </div>;
   }
 }
 
-export default observer(App);
+export default App;

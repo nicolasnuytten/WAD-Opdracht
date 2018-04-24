@@ -2,13 +2,14 @@ import uniqid from "uniqid";
 import { decorate, observable, action } from "mobx";
 
 class Event {
-  constructor(name, date, money, text, removeEvent) {
+  constructor(name, date, money, text, removeEvent, addActive) {
     this.id = uniqid();
     this.name = name;
     this.date = date;
     this.money = money;
     this.text = text;
     this.killMe = removeEvent;
+    this.active = addActive;
   }
 
   updateName = value => {
@@ -27,7 +28,11 @@ class Event {
     this.text = value;
   };
 
-  decrement = () => {
+  setActive = () => {
+    this.active(this);
+  };
+
+  removeEvent = () => {
     this.killMe(this);
   };
 }
@@ -40,7 +45,7 @@ decorate(Event, {
   updateMoney: action, //enforceActions: true
   updateDate: action, //enforceActions: true
   updateText: action, //enforceActions: true
-  decrement: action
+  removeEvent: action
 });
 
 export default Event;

@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { observer } from "mobx-react";
 
 let inputName = null;
 let inputDate = null;
@@ -61,4 +62,4 @@ AddEvent.propTypes = {
 };
 
 
-export default AddEvent;
+export default observer(AddEvent);

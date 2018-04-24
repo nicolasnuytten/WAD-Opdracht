@@ -43,10 +43,7 @@ const EditEvent = ({ event }) => {
 };
 
 EditEvent.propTypes = {
-  id: PropTypes.string.isRequired,
-  event: PropTypes.object.isRequired,
-  onChange: PropTypes.func.isRequired,
-  onSubmit: PropTypes.func.isRequired,
+  event: PropTypes.object.isRequired
 };
 
 export default observer(EditEvent);

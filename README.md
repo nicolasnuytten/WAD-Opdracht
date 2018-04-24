@@ -25,5 +25,13 @@ Weekelijkse updates over de verloop van het project.
     Controlled component aangemaakt voor het aanpassen van het event. Het was even zoeken hoe ik voor elke input met 1 functie de waarde kon aanpassen. Proptypes gingen vlot. 
  - ## Week 3
 	 
-    Dit is de update van week 3.
-
+    Alles ging vlot.
+ - ## Week 4
+	 
+    CRUD toegevoegd. Ging wel ok met wat onderzoek.
+ - ## Week 5
+	 
+    React Router toegevoegd. Niet alles lukte direct na alles te bekijken uiteindelijk toch nog gelukt.
+ - ## Week 6
+	 
+    Mobx nog niet al te goed onder de knie. Nog enkele fouten.

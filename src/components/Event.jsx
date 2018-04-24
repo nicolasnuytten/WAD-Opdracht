@@ -4,7 +4,7 @@ import {observer } from "mobx-react"
 
 const Event = ({ event }) => {
 
-  const { name, date, money, text } = event;
+  const { name, date, money, text, setActive, removeEvent } = event;
   
   // const handleRemoveItem = id => {
   //   onRemove(id);
@@ -28,16 +28,14 @@ const Event = ({ event }) => {
         </div>
       </div>
       <div>
-        <button onClick={event.decrement}>x</button>
+        {/* <button onClick={setActive}>aanpassen</button> */}
+        <button onClick={removeEvent}>x</button>
       </div>
     </div>;
 };
 
 Event.propTypes = {
-  id: PropTypes.string.isRequired,
-  event: PropTypes.object.isRequired,
-  onRemove: PropTypes.func.isRequired,
-  onChange: PropTypes.func.isRequired
+  event: PropTypes.object.isRequired
 };
 
 export default observer(Event);
