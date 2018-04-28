@@ -1,39 +1,31 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { observer } from "mobx-react";
+import Event from "../models/Event";
 
-let inputName = null;
-let inputDate = null;
-let inputMoney = null;
-let inputText = null;
-
-const AddEvent = ({ events, onAdd }) => {
+const AddEvent = ({ store }) => {
   
-  const handleAddItem = e => {
+  const handleSubmitForm = e => {
     e.preventDefault();
-    if ((inputName.value && inputDate.value && inputMoney.value && inputText.value)){
-      onAdd(inputName.value, inputDate.value, inputMoney.value, inputText.value);
-      e.currentTarget.reset();
+    const form = e.currentTarget;
+    if (form.name.value) {
+      const event = new Event(form.name.value, form.date.value, form.money.value, form.text.value);
+      store.addEvent(event);
+      form.reset();
     }
   };
 
-  return (
-    <form className="add-form" onSubmit={handleAddItem}>
+  return <form className="add-form" onSubmit={handleSubmitForm}>
       <div className="event-tags">
         <label id="name">Event Name:</label>
-        <input name="name" type="text" ref={field => (inputName = field)} />
+        <input name="name" type="text" />
       </div>
       <div className="event-tags">
         <label id="date">Date:</label>
-        <input name="date" type="date" ref={field => (inputDate = field)} />
+        <input name="date" type="date" />
       </div>
       <div className="event-tags">
         <label id="money">Money:</label>
-        <select
-          name="money"
-          className="edit-event-money event-tag"
-          ref={field => (inputMoney = field)}
-        >
+        <select name="money" className="edit-event-money event-tag">
           <option value="10">10</option>
           <option value="20">20</option>
           <option value="30">30</option>
@@ -48,18 +40,11 @@ const AddEvent = ({ events, onAdd }) => {
       </div>
       <div className="event-tags">
         <label id="money">Description:</label>
-        <textarea name="text" ref={field => (inputText = field)} />
+        <textarea name="text" />
       </div>
 
       <button>Toevoegen</button>
-    </form>
-  );
+    </form>;
 };
-
-AddEvent.propTypes = {
-  events: PropTypes.object.isRequired,
-  onAdd: PropTypes.func.isRequired
-};
-
 
 export default observer(AddEvent);

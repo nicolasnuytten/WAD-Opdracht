@@ -8,60 +8,20 @@ class Store {
   active = [];
 
   constructor(props) {
-    this.addEvent(
-      new Event(
-        "Bump 2017",
-        "2017-04-21",
-        100,
-        "Leukste festival ooit!",
-        this.removeEvent,
-        this.setActive
-      )
-    );
-    this.addEvent(
-      new Event(
-        "Rock Werchter 2017",
-        "2017-04-21",
-        40,
-        "Ik weet er niet veel meer van. Oops",
-        this.removeEvent,
-        this.setActive
-      )
-    );
-    this.addEvent(
-      new Event(
-        "Tomorrowland 2017",
-        "2017-04-21",
-        80,
-        "Harde beats!",
-        this.removeEvent,
-        this.setActive
-      )
-    );
-    this.addEvent(
-      new Event(
-        "Pukkelpop 2017",
-        "2018-04-21",
-        60,
-        "Pukkel, pukkel, pukkel",
-        this.removeEvent,
-        this.setActive
-      )
-    );
+    this.addEvent(new Event("Bump 2017", "2018-02-10", 20, "TOP FESTIVAL"));
+    this.addEvent(new Event("Bump 2017", "2018-02-10", 20, "TOP FESTIVAL"));
+    this.addEvent(new Event("Bump 2017", "2018-02-10", 20, "TOP FESTIVAL"));
+    this.addEvent(new Event("Bump 2017", "2018-02-10", 20, "TOP FESTIVAL"));
   }
 
   addEvent = event => {
-    this.events.push(event);
+    // console.log(event)
+    this.events.push(event)
   };
 
   removeEvent = event => {
     console.log(event);
-    console.log(this.events);
     this.events.remove(event);
-  };
-
-  setActive = event => {
-    this.events.event.active = true;
   };
 
   get total() {
@@ -73,7 +33,6 @@ decorate(Store, {
   active: observable,
   addEvent: action, //enforceActions: true
   removeEvent: action, //enforceActions: true
-  setActive: action //enforceActions: true
 });
 
 const store = new Store();

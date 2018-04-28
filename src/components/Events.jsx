@@ -1,20 +1,15 @@
 import React from "react";
 import Event from "./Event";
-import PropTypes from "prop-types";
+import EditEvent from "../components/EditEvent";
 
 const Events = ({ store }) => {
   const { events } = store;
   return <ul className="events">
-      {Object.keys(events).map(id => (
-        <Event key={id} id={id} event={events[id]} />
-      ))}
+      {events.map(event => <div className="events" key={event.id}>
+          <Event event={event} />
+          <EditEvent event={event} />
+        </div>)}
     </ul>;
-};
-
-Events.propTypes = {
-  events: PropTypes.object.isRequired,
-  onRemove: PropTypes.func.isRequired,
-  onChange: PropTypes.func.isRequired,
 };
 
 export default Events;
