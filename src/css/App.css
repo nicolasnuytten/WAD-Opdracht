@@ -137,8 +137,8 @@
 }
 
 .edit-event {
-  background: lightgray;
-  width: 40vw;
+  background: #1BB4EF;
+  width: 38vw;
 }
 
 label {
@@ -155,4 +155,9 @@ label {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  background-color: rgb(76, 190, 243);
+  border-radius: 1rem;
+  padding: 1rem;
+  width: 90vw;
+  margin: 2rem auto;
 }

@@ -8,7 +8,7 @@ const AddEvent = ({ store }) => {
     e.preventDefault();
     const form = e.currentTarget;
     if (form.name.value) {
-      const event = new Event(form.name.value, form.date.value, form.money.value, form.text.value);
+      const event = new Event(form.name.value, form.date.value, form.money.value, form.text.value, store.removeEvent, store.setActive);
       store.addEvent(event);
       form.reset();
     }

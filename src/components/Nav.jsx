@@ -11,7 +11,7 @@ const Nav = ({ title, store }) => {
         </h1>
         
         <p className="event-name">Totaal: {store.total}</p>
-        <Link to="/event/add" className="title">
+        <Link to="/events/add" className="title">
           +
         </Link>
       </div>
