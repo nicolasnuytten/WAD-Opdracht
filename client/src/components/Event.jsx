@@ -2,12 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 import {observer } from "mobx-react"
 
-const Event = ({ event, store }) => {
+const Event = ({ event }) => {
 
-  const { name, date, money, text, decrement } = event;
-  
+  const { name, date, money, text, removeEvent } = event;
 
-  return <div>
+  return <div className="event">
       <div className="event-top">
         <p className="event-name">{name}</p>
       </div>
@@ -20,9 +19,9 @@ const Event = ({ event, store }) => {
           <p className="event-text-text">{text}</p>
         </div>
       </div>
-        <button onClick={store.setActive}>Change</button>
-        <button onClick={decrement}>X</button>
-      <div />
+      <div>
+        <button onClick={removeEvent}>x</button>
+      </div>
     </div>;
 };
 
