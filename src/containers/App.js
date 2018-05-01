@@ -15,8 +15,10 @@ class App extends Component {
     return <div className="app">
         <Nav title="Eventory" store={store} />
         <Switch>
-          <Route path="/" exact render={() => <Events store={store} />} />
-          <Route path="/events/add" render={() => <AddEvent store={store} />} />
+          <Route path="/" exact render={() => <div className="events">
+                <Events store={store} />
+              </div>} />
+          <Route path="/event/add"  render={() => <AddEvent store={store} />} />
           <Route component={NotFound} />
         </Switch>
       </div>;
