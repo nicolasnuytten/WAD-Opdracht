@@ -1,17 +1,19 @@
 import { decorate, observable, action, configure } from "mobx";
 import Event from "../models/Event";
+import Api from "../api/events";
 
 configure({ enforceActions: true });
 
 class Store {
   events = [];
-  active = [];
+  name = ``;
+  date = ``;
+  money = ``;
+  text = ``;
 
   constructor(props) {
-    this.addEvent(new Event("Bump 2017", "2018-02-10", 20, "TOP FESTIVAL"));
-    this.addEvent(new Event("Bump 2017", "2018-02-10", 20, "TOP FESTIVAL"));
-    this.addEvent(new Event("Bump 2017", "2018-02-10", 20, "TOP FESTIVAL"));
-    this.addEvent(new Event("Bump 2017", "2018-02-10", 20, "TOP FESTIVAL"));
+    this.api = new Api();
+    this.api.getAll().then(events => this._add(...events));
   }
 
   _add = (...events) => {
