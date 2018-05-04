@@ -5,9 +5,9 @@ import EditEvent from "../components/EditEvent";
 const Events = ({ store }) => {
   const { events } = store;
   return <ul className="events">
-      {events.map(event => <div className="events" key={event.id}>
-          <Event event={event} />
-          <EditEvent event={event} />
+      {events.map(event => <div className="event" key={event.id}>
+          <Event event={event} store={store} />
+          <EditEvent event={event} store={store}/>
         </div>)}
     </ul>;
 };

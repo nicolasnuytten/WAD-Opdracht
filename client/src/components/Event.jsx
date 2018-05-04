@@ -4,7 +4,16 @@ import {observer } from "mobx-react"
 
 const Event = ({ event }) => {
 
-  const { name, date, money, text, removeEvent } = event;
+  const { name, date, money, text } = event;
+  const { remove, update } = store;
+
+  const handleRemoveEvent = () => {
+    remove(event)
+  }
+
+  const handleUpdateEvent = () => {
+    update(event);
+  };
 
   return <div className="event">
       <div className="event-top">
@@ -19,9 +28,9 @@ const Event = ({ event }) => {
           <p className="event-text-text">{text}</p>
         </div>
       </div>
-      <div>
-        <button onClick={removeEvent}>x</button>
-      </div>
+        <button onClick={handleUpdateEvent}>Change</button>
+        <button onClick={handleRemoveEvent}>X</button>
+      <div />
     </div>;
 };
 

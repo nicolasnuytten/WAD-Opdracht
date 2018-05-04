@@ -14,25 +14,56 @@ class Store {
     this.addEvent(new Event("Bump 2017", "2018-02-10", 20, "TOP FESTIVAL"));
   }
 
-  addEvent = event => {
-    // console.log(event)
-    this.events.push(event)
+  _add = (...events) => {
+    events.forEach(event => {
+      const { name, date, money, text, _id } = event;
+      this.events.push(new Event(name, date, money, text, _id));
+    });
   };
 
-  removeEvent = event => {
-    console.log(event);
+  add = (name, date, money, text) => {
+    this.api.create(name, date, money, text).then(event => {
+      this._add(event);
+    });
+  };
+
+  remove = event => {
+    this.api.remove(event).then(() => this._remove(event));
+  };
+
+  _remove = event => {
     this.events.remove(event);
   };
 
-  get total() {
-    return this.events.reduce((acc, cv) => (acc += cv.total), 0);
-  }
+  update = event => {
+    this.api.update(event).then(event => this._update(event));
+  };
+
+  _update = event => {
+    const index = this.events.findIndex(check => check.id === event.id);
+    this.events[index] = event;
+  };
+
+  resetEvent = () => {
+    this.name = ``;
+    this.date = ``;
+    this.money = ``;
+    this.text = ``;
+  };
 }
 decorate(Store, {
   events: observable,
-  active: observable,
-  addEvent: action, //enforceActions: true
-  removeEvent: action, //enforceActions: true
+  resetEvent: action,
+  add: action,
+  _add: action,
+  remove: action,
+  _remove: action,
+  update: action,
+  _update: action,
+  name: observable,
+  date: observable,
+  money: observable,
+  text: observable
 });
 
 const store = new Store();
