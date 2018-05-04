@@ -8,7 +8,7 @@ const Events = ({ store }) => {
   return <ul className="events">
       {events.map(event => <div className="event" key={event.id}>
           <Event event={event} store={store} />
-          { (event.active === true )? <EditEvent event={event}/> : '' }
+          <EditEvent event={event} store={store}/>
         </div>)}
     </ul>;
 };

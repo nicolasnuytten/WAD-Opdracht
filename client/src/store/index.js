@@ -29,20 +29,21 @@ class Store {
     });
   };
 
-  setEventName = value => {
-    this.name = value;
+  remove = event => {
+    this.api.remove(event).then(() => this._remove(event));
   };
 
-  setEventDate = value => {
-    this.date = value;
+  _remove = event => {
+    this.events.remove(event);
   };
 
-  setEventMoney = value => {
-    this.money = value;
+  update = event => {
+    this.api.update(event).then(event => this._update(event));
   };
 
-  setEventText = value => {
-    this.text = value;
+  _update = event => {
+    const index = this.events.findIndex(check => check.id === event.id);
+    this.events[index] = event;
   };
 
   resetEvent = () => {
@@ -51,38 +52,16 @@ class Store {
     this.money = ``;
     this.text = ``;
   };
-
-  addEvent = event => {
-    // console.log(event)
-    this.events.push(event);
-  };
-
-  removeEvent = event => {
-    console.log(event);
-    this.events.remove(event);
-  };
-
-  setActive = event => {
-    if (event.active === true) {
-      event.active = false;
-    } else {
-      event.active = true;
-    }
-  };
 }
 decorate(Store, {
   events: observable,
-  content: observable,
-  addEvent: action,
-  removeEvent: action,
-  setActive: action,
-  setEventName: action,
-  setEventDate: action,
-  setEventMoney: action,
-  setEventText: action,
   resetEvent: action,
   add: action,
   _add: action,
+  remove: action,
+  _remove: action,
+  update: action,
+  _update: action,
   name: observable,
   date: observable,
   money: observable,

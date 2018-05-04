@@ -1,15 +1,16 @@
 import React from "react";
 import { observer } from "mobx-react";
-import Event from "../models/Event";
 
 const AddEvent = ({ store }) => {
   
+  const { add } = store;
+
   const handleSubmitForm = e => {
+    
     e.preventDefault();
     const form = e.currentTarget;
     if (form.name.value) {
-      const event = new Event(form.name.value, form.date.value, form.money.value, form.text.value, store.removeEvent, store.setActive);
-      store.addEvent(event);
+      add(form.name.value, form.date.value, form.money.value, form.text.value);
       form.reset();
     }
   };
