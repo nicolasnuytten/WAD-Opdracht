@@ -10,6 +10,7 @@ class Store {
   date = ``;
   money = ``;
   text = ``;
+  //cl
 
   constructor(props) {
     this.api = new Api();
