@@ -13,13 +13,13 @@ class App extends Component {
   render() {
     const { store } = this.props;
     return <div className="app">
-        <Nav title="Eventory" store={store} />
-        <Switch>
-          <Route path="/" exact render={() => <Events store={store} />} />
-          <Route path="/events/add" render={() => <AddEvent store={store} />} />
-          <Route component={NotFound} />
-        </Switch>
-      </div>;
+      <Nav title="Eventory" store={store} />
+      <Switch>
+        <Route path="/" exact render={() => <Events store={store} />} />
+        <Route path="/events/add" render={() => <AddEvent store={store} />} />
+        <Route component={NotFound} />
+      </Switch>
+    </div>;
   }
 }
 
