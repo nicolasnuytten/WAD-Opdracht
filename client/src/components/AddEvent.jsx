@@ -1,5 +1,6 @@
 import React from "react";
 import { observer } from "mobx-react";
+import { Link } from "react-router-dom";
 
 const AddEvent = ({ store }) => {
 
@@ -44,7 +45,7 @@ const AddEvent = ({ store }) => {
       <textarea name="text" />
     </div>
 
-    <button>Toevoegen</button>
+    <Link to="/"><button>Toevoegen</button></Link>
   </form>;
 };
 

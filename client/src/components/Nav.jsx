@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Nav = ({ title, store }) => {
+const Nav = ({ title }) => {
   return <div className="navigation">
     <div className="container">
       <h1 className="title">
@@ -10,7 +10,7 @@ const Nav = ({ title, store }) => {
         </Link>
       </h1>
 
-      <p className="event-name">Totaal: {store.total}</p>
+      <p className="event-name">Totaal: </p>
       <Link to="/events/add" className="title">
         +
         </Link>

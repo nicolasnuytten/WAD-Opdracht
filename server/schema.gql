@@ -1,0 +1,25 @@
+module.exports = `
+  type Event {
+    _id: String
+    name: String
+    date: String
+    money: String
+    text: String
+  }
+
+  type Query {
+    allEvents: [Event]
+    event(_id:String!):Event
+  }
+
+  type Mutation {
+    addEvent(
+    name: String
+    date: String
+    money: String
+    text: String
+    ):Event
+  }
+`
+
+

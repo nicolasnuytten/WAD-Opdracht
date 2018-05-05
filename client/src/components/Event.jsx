@@ -2,17 +2,19 @@ import React from "react";
 import PropTypes from "prop-types";
 import { observer } from "mobx-react"
 
-const Event = ({ event, store }) => {
+const Event = ({ event }) => {
 
   const { name, date, money, text } = event;
-  const { remove, update } = store;
+  // const { remove, update } = store;
 
   const handleRemoveEvent = () => {
-    remove(event)
+    // remove(event)
+    console.log("remove", event)
   }
 
   const handleUpdateEvent = () => {
-    update(event);
+    // update(event);
+    console.log("change", event)
   };
 
   return <div>
