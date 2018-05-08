@@ -8,6 +8,7 @@ exports.create = (req, res) => {
   }
 
   const event = new Event({
+    
     name: req.body.name,
     date: req.body.date,
     money: req.body.money,
