@@ -12,8 +12,8 @@ class Store {
   text = ``;
 
   constructor(props) {
-    this.api = new Api();
-    this.api.getAll().then(events => this._add(...events));
+    // this.api = new Api();
+    // this.api.getAll().then(events => this._add(...events));
   }
 
   _add = (...events) => {
