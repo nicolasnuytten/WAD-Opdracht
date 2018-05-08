@@ -1,5 +1,8 @@
 import React from "react";
 import { observer } from "mobx-react"
+import REMOVE_EVENT from "../graphql/removeEvent";
+import GET_ALL_EVENTS from "../graphql/getAllEvents";
+import { Mutation } from "react-apollo";
 
 const Event = ({ event }) => {
 
@@ -16,7 +19,12 @@ const Event = ({ event }) => {
     console.log("change", event)
   };
 
-  return <article>
+  return <Mutation mutation={REMOVE_EVENT} update={(cache, { data: { removeEvent } }) => {
+    const data = cache.readQuery({ query: GET_ALL_EVENTS });
+    data.allEvents.remove(removeEvent);
+    cache.writeQuery({ query: GET_ALL_EVENTS, data });
+  }}>
+    {removeEvent => <article>
     <div className="event-top">
       <p className="event-name">{name}</p>
     </div>
@@ -29,10 +37,12 @@ const Event = ({ event }) => {
         <p className="event-text-text">{text}</p>
       </div>
     </div>
-    <button onClick={handleUpdateEvent}>Change</button>
-    <button onClick={handleRemoveEvent}>X</button>
+      <button onClick={handleUpdateEvent}>Change</button>
+      <button onClick={e => removeEvent({ variables: { name: name, date: date, money: money, text: text } })}>X</button>
     <div />
-  </article>;
+  </article>
+  }
+  </Mutation>;
 };
 
 

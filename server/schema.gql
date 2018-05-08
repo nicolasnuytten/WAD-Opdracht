@@ -1,6 +1,5 @@
 module.exports = `
   type Event {
-    _id: String
     name: String
     date: String
     money: String
@@ -19,6 +18,9 @@ module.exports = `
     date: String
     money: String
     text: String
+    ):Event
+    removeEvent(
+      name: String
     ):Event
   }
 `

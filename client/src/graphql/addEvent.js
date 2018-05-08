@@ -7,7 +7,8 @@ export default gql`
     $money: String!
     $text: String!
   ) {
-    addEvent(name: $name, date: $date, money: $money, text: $text) { 
+    addEvent(name: $name, date: $date, money: $money, text: $text) {
+      _id
       name
       date
       money

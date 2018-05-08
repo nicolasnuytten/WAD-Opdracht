@@ -15,8 +15,8 @@ module.exports = {
     }
   },
   Event: {
-    _id: _id => {
-      console.log(_id);
+    event: event => {
+      return Event.findById(event.topic);
     }
   }
 };
