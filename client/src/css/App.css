@@ -83,8 +83,8 @@
 .event-text-text {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 0.8rem;
+  height: 5vw;
 }
-
 .event-top {
   display: flex;
   justify-content: space-between;
@@ -94,7 +94,8 @@
 
 .event-tags {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  width: 26vw;
 }
 
 .event-tag {
@@ -107,7 +108,7 @@
 }
 
 .event-money {
-  width: 6vw;
+  width: 8vw;
   text-align: center
 }
 

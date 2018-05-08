@@ -1,12 +1,13 @@
 import { decorate, observable, action } from "mobx";
 
 class Event {
-  constructor(name, date, money, text, id, removeEvent) {
+  constructor(_id, name, date, money, text, removeEvent, changeActive) {
     this.name = name;
     this.date = date;
     this.money = money;
     this.text = text;
-    this.id = id;
+    this._id = _id;
+    this.active = true;
   }
 
   updateName = value => {
@@ -26,14 +27,17 @@ class Event {
   };
 }
 decorate(Event, {
+  _id: observable,
   name: observable,
   money: observable,
   text: observable,
   date: observable,
+  active: observable,
   updateName: action, //enforceActions: true
   updateMoney: action, //enforceActions: true
   updateDate: action, //enforceActions: true
-  updateText: action //enforceActions: true
+  updateText: action, //enforceActions: true
+  changeActive: action //enforceActions: true
 });
 
 export default Event;
