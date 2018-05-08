@@ -20,10 +20,14 @@ module.exports = `
       text: String
     ):Event
     updateEvent(
+      _id: String
       name: String
       date: String
       money: String
       text: String
+    ):Event
+    deleteEvent(
+      _id: String
     ):Event
   }
 `

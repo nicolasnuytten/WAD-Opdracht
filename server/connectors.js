@@ -6,6 +6,7 @@ mongoose.connect("mongodb://localhost:27017/nicolasnuytten");
 
 const EventSchema = mongoose.Schema(
   {
+    _id: String,
     name: String,
     date: String,
     money: String,
