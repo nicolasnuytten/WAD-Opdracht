@@ -9,8 +9,6 @@ const Nav = ({ title }) => {
           {title}
         </Link>
       </h1>
-
-      <p className="event-name">Totaal: </p>
       <Link to="/events/add" className="title">
         +
         </Link>

@@ -1,5 +1,6 @@
 module.exports = `
   type Event {
+    _id: String
     name: String
     date: String
     money: String
@@ -13,13 +14,16 @@ module.exports = `
 
   type Mutation {
     addEvent(
-    name: String
-    date: String
-    money: String
-    text: String
-    ):Event
-    removeEvent(
       name: String
+      date: String
+      money: String
+      text: String
+    ):Event
+    updateEvent(
+      name: String
+      date: String
+      money: String
+      text: String
     ):Event
   }
 `
