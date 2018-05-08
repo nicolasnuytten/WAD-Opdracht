@@ -13,10 +13,5 @@ module.exports = {
     addEvent(_, args) {
       return new Event(args).save();
     }
-  },
-  Event: {
-    event: event => {
-      return Event.findById(event.topic);
-    }
   }
 };

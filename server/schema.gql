@@ -13,7 +13,6 @@ module.exports = `
 
   type Mutation {
     addEvent(
-    _id: String
     name: String
     date: String
     money: String
