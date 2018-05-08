@@ -5,11 +5,11 @@ import { observer } from "mobx-react";
 
 const Events = ({ events }) => {
     return <ul className="events">
-        {events.map(event => <div className="event" key={event.id}>
+        {events.map(event => <div className="event" >
             <Event event={event} />
             <EditEvent event={event} />
-        </div>)}
-    </ul>;
+          </div>)}
+      </ul>;
 };
 
 export default observer(Events);

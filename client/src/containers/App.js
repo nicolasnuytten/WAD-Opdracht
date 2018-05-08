@@ -9,13 +9,11 @@ import { Route, Switch, withRouter } from "react-router-dom";
 import { observer } from "mobx-react";
 
 import { Query } from "react-apollo";
-import gql from "graphql-tag";
 import GET_ALL_EVENTS from "../graphql/getAllEvents";
 
 class App extends Component {
 
   render() {
-    const { store } = this.props;
     return <div className="app">
         <Nav title="Eventory" />
         <Query query={GET_ALL_EVENTS}>
@@ -26,12 +24,12 @@ class App extends Component {
             if (error) return <p>Error: {error.message}</p>;
             return <Switch>
                 <Route path="/" exact render={() => <Events events={allEvents} />} />
-                {/* <Route path="/events/add" render={() => <AddEvent store={store} />} /> */}
+                <Route path="/events/add" component={AddEvent} />
                 <Route component={NotFound} />
               </Switch>;
           }}
         </Query>
-      </div>;
+      </div>
   }
 }
 

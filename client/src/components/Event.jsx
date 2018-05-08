@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { observer } from "mobx-react"
 
 const Event = ({ event }) => {
@@ -17,7 +16,7 @@ const Event = ({ event }) => {
     console.log("change", event)
   };
 
-  return <div>
+  return <article>
     <div className="event-top">
       <p className="event-name">{name}</p>
     </div>
@@ -33,11 +32,8 @@ const Event = ({ event }) => {
     <button onClick={handleUpdateEvent}>Change</button>
     <button onClick={handleRemoveEvent}>X</button>
     <div />
-  </div>;
+  </article>;
 };
 
-Event.propTypes = {
-  event: PropTypes.object.isRequired
-};
 
 export default observer(Event);

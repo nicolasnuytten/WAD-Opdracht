@@ -1,22 +1,44 @@
 import React from "react";
 import { observer } from "mobx-react";
 import { Link } from "react-router-dom";
+import ADD_EVENT from "../graphql/addEvent";
+import GET_ALL_EVENTS from "../graphql/getAllEvents";
+import { Mutation } from "react-apollo";
 
-const AddEvent = ({ store }) => {
+const AddEvent = ({ history }) => {
 
-  const { add } = store;
-
-  const handleSubmitForm = e => {
-
-    e.preventDefault();
-    const form = e.currentTarget;
-    if (form.name.value) {
-      add(form.name.value, form.date.value, form.money.value, form.text.value);
-      form.reset();
-    }
-  };
-
-  return <form className="add-form" onSubmit={handleSubmitForm}>
+  return (
+    <Mutation
+      mutation={ADD_EVENT}
+      update={(cache, { data: { addEvent } }) => {
+        const data = cache.readQuery({
+          query: GET_ALL_EVENTS
+        });
+        data.allEvents.push(addEvent);
+        cache.writeQuery({
+          query: GET_ALL_EVENTS,
+          data
+        });
+      }}
+    >
+    {addEvent => (
+        <form className="add-form" onSubmit={
+          e => {
+            e.preventDefault();
+            const form = e.currentTarget;
+            if (form.name.value && form.date.value && form.money.value && form.text.value) {
+              addEvent({
+                variables: {
+                  name: form.name.value,
+                  date: form.date.value,
+                  money: form.money.value,
+                  text: form.text.value
+                }
+              });
+              history.push(`/`);
+            }
+          }
+        }>
     <div className="event-tags">
       <label id="name">Event Name:</label>
       <input name="name" type="text" />
@@ -46,7 +68,8 @@ const AddEvent = ({ store }) => {
     </div>
 
     <Link to="/"><button>Toevoegen</button></Link>
-  </form>;
-};
-
+  </form>
+  )}
+  </Mutation>
+  )};
 export default observer(AddEvent);

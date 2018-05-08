@@ -1,12 +1,12 @@
 import { decorate, observable, action } from "mobx";
 
 class Event {
-  constructor(name, date, money, text, id, removeEvent) {
+  constructor(_id, name, date, money, text, removeEvent) {
     this.name = name;
     this.date = date;
     this.money = money;
     this.text = text;
-    this.id = id;
+    this.id = _id;
   }
 
   updateName = value => {
