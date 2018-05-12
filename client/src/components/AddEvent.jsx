@@ -56,7 +56,6 @@ const AddEvent = ({ history }) => {
 };
 
 AddEvent.propTypes =  {
-  onAddEvent: PropTypes.func.isRequired,
   history: PropTypes.object.isRequired,
 }
 
